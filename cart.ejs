@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <!-- <link rel="stylesheet" href="Css/header.css"> -->
+    <title>My Cart</title>
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+    <%- include('./header.ejs');%>
+
+    <div class="content-wrapper" style="flex-grow: 1;">
+    <h1 class="headline">My Cart</h1>
+    <% if (products.length === 0) { %>
+      <h4 id="empty">The Cart is Empty</h4>
+      <h4 id="empty">If you have orders , go to My Orders page</h4>
+    <% } else { %>
+      <form  id="cart" action="/Cart" method="post">
+    <div class="table-responsive-lg">
+      <table class="table">
+
+        <thead>
+        <tr>
+          <th class="column-width">Product name</th>
+          <th class="column-width">Price</th>
+          <th class="column-width">Category</th>
+          <th class="column-width">Quantity</th>
+          <th class="column-width">Total price</th>
+          <th class="column-width">Actions</th>
+
+        </tr>
+    </thead>
+    <tbody>
+      <% let totalPrice = 0; %>
+      <% products.forEach(function(item) { %>
+        <% const product = item; %>
+        <% if (product) { %>
+          <tr>
+            <td class="column-width"><%= product.Name %></td>
+            <td class="column-width"><%= product.price %></td>
+            <td class="column-width"><%= product.type %></td>
+            <td class="column-width">
+              <form id="quantity-form" action="/Cart/Quantity" method="post">
+                <input type="hidden" name="itemName2" value="<%= product._id %>">
+                <div class="quantity-select">
+                  <select name="quantity-<%= product._id %>">
+                    <% for (let i = 1; i <= 20; i++) { %>
+                      <option value="<%= i %>" <% if (parseInt(item.quantity) === i) { %> selected <% } %>><%= i %></option>
+                    <% } %>
+                  </select>
+                  
+                  
+               
+                </div>
+              </form>
+            </td>
+            <td><%= product.price * item.quantity %></td>
+            <% totalPrice +=(product.price * item.quantity); %>
+            <td>
+              <form action="/cart/deleteProduct" method="post">
+                <input type="hidden" name="productId" value="<%= product._id %>">
+                <button type="button" class="delete-product" data-id="<%= product._id %>">Delete</button>
+              </form>
+            </td>
+          </tr>
+        <% } %>
+      <% }); %>
+      
+        </tbody>
+    </table>
+
+    <p>Total to pay:    <%= totalPrice%> $</p>
+    <button type="submit" name="action" value="buy" class="delete-button" name="action" value="Clear" id="buy-button">Place your order </button>      
+
+    </div>
+  </form>
+  <%}%> 
+</div>
+  <%- include('./footer.ejs');%>
+
+  
+  
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script> 
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.0/css/jquery.dataTables.css">
+  <script src="Js/cart.js"></script>
+</body>
+</html>

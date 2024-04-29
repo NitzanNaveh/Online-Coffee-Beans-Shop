@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <!-- Required meta tags -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="Css/allproducts.css">
+
+
+    <title>Secret Coffee - Shop</title>
+
+</head>
+<body>
+
+    <%- include('./header.ejs');%>  
+    
+    <div class="container-fluid p-4 mb-4">
+       
+            <!-- Search bar -->
+                <input class="form-control mr-2" type="text" placeholder="Search" aria-label="Search" id="search-input">
+                
+                <div id="autocomplete-dropdown" class="dropdown-content"></div>
+
+    </div>
+<!-- New Filterring Method - Begin -->
+<form action="/shop" method="post" id="sortForm" name="sortForm">
+    <div class="sorting-container">
+      <label class="sorting-label" for="sorting">Sort By:</label>
+      <select id="sorting" name="sorting"
+      style="padding: 5px; border: 1px solid #ccc; border-radius: 5px;">>
+        <option value="price">Price</option>
+        <option value="origin">Origin</option>
+        <option value="intensity">Intensity</option>
+      </select>
+      <button type="submit" id="submitSort" class="btn btn">Sort</button>
+    </div>
+  </form>
+<!-- New Filterring Method - End -->
+
+    <div class="container-fluid">
+     <div id="searchResultsContainer">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+            <% capsules.forEach(function(capsule) { %>
+            <div class="col mb-4">
+                <div class="card">
+                    <% if (capsule.image) { %>
+                    <a href="/shop/capsule?name=<%= capsule['Name'] %>">
+                        <img class="card-img-top" src="<%= capsule.image %>" alt="<%= capsule["_id"] %> Image" />
+                    </a>
+                    <% } else { %>
+                    <p>No image available</p>
+                    <% } %>
+                    <div class="card-body">
+                        <h2 class="card-title"><%= capsule["Name"] %></h2>
+                        <p class="card-text">Price: <%= capsule.price %>$</p>
+                        <p class="card-text">Intensity: <%= capsule.intensity %></p>
+                        <p class="card-text">Origin: <%= capsule.origin %></p>
+                        <p class="card-text" id="description"><%= capsule.flavor %></p>
+                        <div class="button-container2">
+                            <form method="POST" action="/cart/Addto" id="addToCart">
+                                <input type="hidden" name="productId" value="<%= capsule['Name'] %>">
+                                <button id="cart_button" class="btn btn-primary" type="submit" name="action" value="cart:<%= capsule["_id"] %>">Add to Cart</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+</div>
+
+<%- include('./footer.ejs');%>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script> 
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="Js/allproducts.js"></script>
+
+
+</body>
+</html>

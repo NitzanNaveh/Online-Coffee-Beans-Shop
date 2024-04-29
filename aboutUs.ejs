@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <title>Secret Coffee - About Us</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            background-color: #f8f1e7; /* Light coffee cream color */
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .about-section {
+            background-color: #fff; /* White background */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            color:black;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4e3629; /* Dark coffee brown color */
+        }
+
+        .about-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+            margin-top: 20px;
+        }
+
+        /* Places We Work With Section */
+        h2 {
+            text-align: center;
+            color: #4e3629; /* Dark coffee brown color */
+            margin-top: 40px;
+        }
+
+        .place-list {
+            background-color: #fff; /* White background */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .place-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .place-list li {
+            font-size: 16px;
+            color: #4e3629; /* Dark coffee brown color */
+            margin-bottom: 10px;
+        }
+
+        /* Team Section */
+        .team-member {
+            background-color: #fff; /* White background */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .team-member img {
+            max-width: 100%;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .team-member h3 {
+            font-size: 18px;
+            color: #4e3629; /* Dark coffee brown color */
+            margin: 0;
+        }
+
+        .team-member p {
+            font-size: 14px;
+            color: #777;
+            margin: 0;
+        }
+
+        /* Map Section */
+        #mapContainer {
+            border: 0;
+            width: 100%;
+            height: 350px;
+            border-radius: 10px;
+            height: 50vh;
+        }
+    </style>
+</head>
+<body>
+    <%- include('header.ejs');%>
+    
+    <div class="container">
+        <h1>About Us</h1>
+        <div class="about-section">
+            <p>Welcome to Secret Coffee!</p>
+            <p>We are a coffee shop that sources and offers a diverse selection of high-quality coffee beans from around the world. Our mission is to bring the rich flavors of global coffee to your cup.</p>
+            <p>At Secret Coffee, we prioritize responsible sourcing and sustainability, supporting local farmers and eco-friendly practices in the coffee industry.</p>
+            <p>Whether you enjoy espresso, lattes, or iced coffee, we have the perfect coffee beans for you. Join us in exploring the world of coffee.</p>
+        </div>
+        
+        <div class="row">
+            <h2>Places We Work With</h2>
+            <div class="col-md-6">
+                <div id="mapContainer"></div>
+            </div>
+            <div class="col-md-6">
+                <div class="place-list">
+                    <ul>
+                        <li>Supreme Roastworks – Oslo, Norway</li>
+                        <li>HanSo Café – Madrid, Spain</li>
+                        <li>Bob Coffee Lab – Bucharest, Romania</li>
+                        <li>Ben gurion coffee – Tel Aviv, Israel</li>
+                        <li>Cafe ve Yam – Shefayim, Israel</li>
+                        <li>Nof Yam Cafe – Herzliya, Israel</li>
+                        <li>Jacobs Farm Cheese Inc – Kfar Haroeh, Israel</li>
+                        <li>Jack's Café – Cusco, Peru</li>
+                        <li>Pergamino Cafe – Medellín, Colombia</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2>Our Team</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="team-member">
+                    <img src="../public/Gallery/ofek.jpg" alt="Ofek Amirav">
+                    <h3>Ofek Amirav</h3>
+                    <p>CEO</p>
+                    <p>ofek.amirav@gmail.com</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="team-member">
+                    <img src="../public/Gallery/aviv.jpg" alt="Aviv Portal">
+                    <h3>Aviv Portal</h3>
+                    <p>CEO</p>
+                    <p>mike@example.com</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="team-member">
+                    <img src="../public/Gallery/nitzan.jpeg" alt="Nitzan Naveh">
+                    <h3>Nitzan Naveh</h3>
+                    <p>CFO</p>
+                    <p>nitzanav80@gmail.com</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="team-member">
+                    <img src="../public/Gallery/hani.jpg" alt="Hani Pardilov">
+                    <h3>Hani Pardilov</h3>
+                    <p>CMO</p>
+                    <p>hanipardilov@gmail.com</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+    <%- include('./footer.ejs');%>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script> 
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%=apiKey%>&callback=initMap" async defer></script>
+    <script>
+        function initMap() {
+  var map;
+  var locations = [
+    { lat: 59.928074, lng: 10.759258, title: "Supreme Roastworks" },
+    { lat: -24.363, lng: 130.044, title: "HanSo Café" },
+    { lat: 44.465636022151216, lng: 26.085553218818863, title: "Bob Coffee Lab" },
+    { lat: 32.085915748602645, lng: 34.77233841454925, title: "Ben gurion coffee" },
+    { lat: 32.216709479010255, lng: 34.8211371635945, title: "Cafe ve Yam" },
+    { lat: 32.18998252182868, lng: 34.810071013411445, title: "Nof Yam Cafe" },
+    { lat: 32.39163994003476, lng: 34.91193845616498, title: "Jacobs Farm Cheese Inc" },
+    { lat: -13.515999789608632, lng: -71.97521998016877, title: "Jack's Café" },
+    { lat: 6.21556706510365, lng: -75.57285018446767, title: "Pergamino Cafe" }
+    
+  ];
+
+  map = new google.maps.Map(document.getElementById("mapContainer"), {
+    zoom: 4,
+    center: { lat: 31.0461 , lng: 34.8516  }
+  });
+
+  // Loop through the locations array and add markers to the map
+  locations.forEach(function(location) {
+    var marker = new google.maps.Marker({
+      position: { lat: location.lat, lng: location.lng },
+      map: map,
+      title: location.title //set a title for each marker
+    });
+  });
+}
+
+    </script>
+    
+</body>
+</html>
